@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rover: one
+  x: 1
+  'y': 1
+  orientation: 1
+
+two:
+  rover: two
+  x: 1
+  'y': 1
+  orientation: 1
