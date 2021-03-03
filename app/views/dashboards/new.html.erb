@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row pt-4">
+    <div class="col-12">
+        <%= form_with  url: dashboards_read_file_path, method: :post, html: { multipart: true } do |f| %>
+            <div class="card p-3" style="width: 18rem;">
+                <%= image_tag "rover.jpg", class: "card-img-top" %>
+                <div class="card-body">
+                    <h5 class="card-title">Explore Marte</h5>
+                    <p class="card-text">Crie seus comandos com arquivo txt e faça upload. Acompanhe a exploraçã pelo gráfico</p>
+                    <div class="row">
+                        <%= f.file_field :import_file, class: "btn btn-dark" %>
+                    </div>
+                    <div class="row mt-2">
+                        <%= f.submit %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+  </div>
+</div>
