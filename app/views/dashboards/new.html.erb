@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row pt-4">
-        <div class="col-4">
+        <div class="col-2">
             <%= form_with  url: dashboards_read_file_path, method: :post, html: { multipart: true } do |f| %>
                 <div class="card p-3" style="width: 18rem;">
                     <%= image_tag "rover.jpg", class: "card-img-top" %>
@@ -18,18 +18,22 @@
             <% end %>
         </div>
     
-            <div class="col-8">
-                <div class="card text-white m-2" style="background-color: rgba(0, 0, 0, 0.5); max-width: 50rem;">
-                    <div class="card-header">Movimentação dos Rovers</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Platô</h5>
-                        <div id="chart_div" class="m-5" style="background-color: rgba(255, 255, 255, 0.5); width: auto; height: auto;"></div>
-                        <div id="log" >
-                            <p class="card-text" >Logs das rotas.</p>
-                        </div>
+        <div class="col-8">
+            <div class="card text-white m-2" style="background-color: rgba(255, 159, 0, 0.09); ">
+                <div class="card-header">Movimentação dos Rovers</div>
+                <div class="card-body">
+                    <h5 class="card-title">Platô</h5>
+                    <div id="chart_div" class="m-5" style="background-color: rgba(255, 159, 0, 0.5); width: auto; height: auto;"></div>
+                    <div id="log" >
+                        <p class="card-text" >Logs das rotas.</p>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col-2 p-2" style="background-color: rgba(255, 159, 0, 0.5); max-height: 17rem; max-width: 17rem; border-radius: 100%;">
+            <%= image_tag "navigation.png", class:'img-fluid', alt:'ícone de loja' %>
+        </div>
     
     </div>
 </div>
