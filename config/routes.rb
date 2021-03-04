@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   get  'dashboards/new', to: 'dashboards#new'
   post 'dashboards/read_file', to: 'dashboards#read_file'
+  get  'dashboards/charts_ajax', to: 'dashboards#charts_ajax'
 end

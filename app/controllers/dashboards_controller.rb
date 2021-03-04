@@ -17,6 +17,15 @@ class DashboardsController < ApplicationController
     end
   end
 
+  def charts_ajax
+    mov = { routes: [] }
+    Plateau.last.rovers.each do |rover|
+      mov[:routes].push(rover.movements)
+    end
+    render json: mov.as_json
+  end
+
+
   private
 
   def set_rovers(plateau, file)
