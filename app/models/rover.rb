@@ -17,7 +17,7 @@ class Rover < ApplicationRecord
 
 				new_position = set_position(nil, nil, nil)
 				orientation = orientations
-				key = (@route[@route.size - 1][:orientation] + move).to_sym 
+				key = (last_position[:orientation] + move).to_sym 
 				new_position.orientation = orientation[key]
 				new_position.x = last_position.x
 				new_position.y = last_position.y
@@ -26,32 +26,16 @@ class Rover < ApplicationRecord
 				
 			elsif move.eql?('M')
 
-				if !last_position.x.present? && !last_position.y.present?
-					last_position.x = previous_position.x
-					last_position.y = previous_position.y
-					
-					run = forward(last_position.x, last_position.y)
+				last_position = set_position(last_position.x, last_position.y, last_position.orientation)
+				
+				run = forward(last_position.x, last_position.y)
 
-					x = run[last_position.orientation.to_sym][:mov_x].present? ? run[last_position.orientation.to_sym][:mov_x] : previous_position.x
-					y = run[last_position.orientation.to_sym][:mov_y].present? ? run[last_position.orientation.to_sym][:mov_y] : previous_position.y
-					
-					last_position.x = x
-					last_position.y = y
-					
-				else
+				x = run[last_position.orientation.to_sym][:mov_x].present? ? run[last_position.orientation.to_sym][:mov_x] : previous_position.x
+				y = run[last_position.orientation.to_sym][:mov_y].present? ? run[last_position.orientation.to_sym][:mov_y] : previous_position.y
 
-					last_position = set_position(last_position.x, last_position.y, last_position.orientation)
-					
-					run = forward(last_position.x, last_position.y)
-
-					x = run[last_position.orientation.to_sym][:mov_x].present? ? run[last_position.orientation.to_sym][:mov_x] : previous_position.x
-					y = run[last_position.orientation.to_sym][:mov_y].present? ? run[last_position.orientation.to_sym][:mov_y] : previous_position.y
-	
-					last_position.x = x
-					last_position.y = y
-					@route.push(last_position)
-
-				end
+				last_position.x = x
+				last_position.y = y
+				@route.push(last_position)
 
 			end
 
@@ -62,7 +46,7 @@ class Rover < ApplicationRecord
 		end
 	end
 
-	# pega a primeira posição na area definida
+	# takes the first position in the defined area
 	def get_position
 
 		coordinate = set_position(nil, nil, nil)
@@ -78,12 +62,12 @@ class Rover < ApplicationRecord
 
 	private
 	
-	# cria uma posição vazia
+	# creates an empty position
 	def set_position(x = nil, y = nil, orientation = nil)
 		Movement.new(rover: self, x: x, y: y, orientation: orientation)
 	end
 
-	# Orientação do rover
+	# Rover orientation
 	def orientations
 		{
 			'NL': 'W',
@@ -97,7 +81,7 @@ class Rover < ApplicationRecord
 		}
 	end
 
-	# Movimentação do rover
+	# Rover drive
 	def forward(x = 0, y = 0)
 		{
 			'W': { 'mov_x': x - 1 },
