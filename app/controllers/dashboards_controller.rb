@@ -6,13 +6,19 @@ class DashboardsController < ApplicationController
   def read_file
     plateau = Plateau.new
     plateau = set_rovers(plateau, params[:import_file])
-    plateau.save
+    Plateau.transaction do
+      plateau.save
+    end
 
     respond_to do |format|
       if plateau.save
         format.html { redirect_to '/dashboards/new', notice: 'Comandos criados com sucesso.' }
       else
-        format.html { redirect_to '/dashboards/new', notice: 'Comandos criados com erro!' }
+        notices = []
+        plateau.errors.full_messages.each do |error|
+          notices << error
+        end
+          format.html { redirect_to '/dashboards/new', notice: notices }
       end
     end
   end
