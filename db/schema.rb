@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_120341) do
+ActiveRecord::Schema.define(version: 2021_03_04_072208) do
 
   create_table "movements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "rover_id"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2021_03_03_120341) do
 
   create_table "plateaus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "size", null: false
+    t.integer "limit_x"
+    t.integer "limit_y"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

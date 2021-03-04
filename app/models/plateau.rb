@@ -1,6 +1,8 @@
 class Plateau < ApplicationRecord
 	has_many :rovers
-	
+
+	before_create :set_limits
+
 	attr_accessor :axis
 
 	def build_axis
@@ -27,5 +29,18 @@ class Plateau < ApplicationRecord
 		end
 		f.close
 		arr
+	end
+
+	private
+
+	#considers only the first two digits
+	def set_limits
+		size.split('').each_with_index do |limit, index|
+			if index.eql?(0)
+				self.limit_x = limit.to_i
+			elsif index.eql?(1)
+				self.limit_y = limit.to_i
+			end
+		end
 	end
 end
