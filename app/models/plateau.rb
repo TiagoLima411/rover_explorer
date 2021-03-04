@@ -1,6 +1,8 @@
 class Plateau < ApplicationRecord
 	has_many :rovers
 
+	validates :size, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
+
 	before_create :set_limits
 
 	attr_accessor :axis
@@ -25,7 +27,7 @@ class Plateau < ApplicationRecord
 		arr = []
 		f = file.open
 		f.each_line do |line|
-			arr.push(line)
+			arr.push(line.strip)
 		end
 		f.close
 		arr

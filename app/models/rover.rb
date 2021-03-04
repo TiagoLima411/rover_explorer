@@ -3,6 +3,7 @@ class Rover < ApplicationRecord
 	has_many :movements
 
 	after_create :comand_move
+	validate :check_commands, on: :create
 
 	def comand_move
 		@route = []
@@ -50,7 +51,6 @@ class Rover < ApplicationRecord
 	def get_position
 
 		coordinate = set_position(nil, nil, nil)
-		plateau.build_axis
 
 		position.split('').each_with_index do |pos, index|
 			coordinate.x = plateau.axis[:x][pos.to_i] if index.eql?(0)
@@ -89,6 +89,12 @@ class Rover < ApplicationRecord
 			'S': { 'mov_y': y - 1 },
 			'N': { 'mov_y': y + 1 }
 		}
+	end
+
+	def check_commands
+		if !['N', 'S', 'E', 'W'].include?(position[2])
+			self.errors.add(:base, "Orientação inexistente!" )
+		end
 	end
 
 end
