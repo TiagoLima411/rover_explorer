@@ -12,7 +12,7 @@ class DashboardsController < ApplicationController
 
     respond_to do |format|
       if plateau.save
-        format.html { redirect_to '/dashboards/new', notice: 'Comandos criados com sucesso.' }
+        format.html { redirect_to '/dashboards/new', notice: 'Commands created successfully.' }
       else
         notices = []
         plateau.errors.full_messages.each do |error|
