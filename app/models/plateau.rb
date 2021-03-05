@@ -1,7 +1,7 @@
 class Plateau < ApplicationRecord
 	has_many :rovers
 
-	validates :size, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
+	validates :size, presence: true, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
 
 	before_create :set_limits
 
