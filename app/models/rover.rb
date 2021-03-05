@@ -44,7 +44,9 @@ class Rover < ApplicationRecord
 		end
 
 		@route.each do |movement|
-			movement.save
+			limit_x = (movement.x <= movement.rover.plateau.limit_x) && (movement.x >= 0)
+			limit_y = (movement.y <= movement.rover.plateau.limit_y) && (movement.y >= 0)
+			movement.save if limit_x && limit_y
 		end
 	end
 

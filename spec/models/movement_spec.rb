@@ -9,10 +9,6 @@ RSpec.describe Movement, type: :model do
     end
     
     it { expect{ create(:movement, :first_movement) }.to change{Movement.all.size}.by(11) }
-
-    it "Movement to not valid" do
-      expect(build(:movement, :out_of_bounds)).to_not be_valid
-    end
     
   end
 
