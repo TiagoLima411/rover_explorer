@@ -5,8 +5,8 @@
                 <div class="card p-3" style="width: 18rem;">
                     <%= image_tag "rover.jpg", class: "card-img-top" %>
                     <div class="card-body">
-                        <h5 class="card-title">Explore Marte</h5>
-                        <p class="card-text">Crie seus comandos com arquivo txt e faça upload. Acompanhe a exploraçã pelo gráfico</p>
+                        <h5 class="card-title">Explore Mars</h5>
+                        <p class="card-text">Create your commands with txt file and upload. Follow the exploration on the graph</p>
                         <div class="row">
                             <%= f.file_field :import_file, class: "btn btn-dark" %>
                         </div>
@@ -20,12 +20,12 @@
     
         <div class="col-8">
             <div class="card text-white m-2" style="background-color: rgba(255, 159, 0, 0.09); ">
-                <div class="card-header">Movimentação dos Rovers</div>
+                <div class="card-header">Movement of Rovers</div>
                 <div class="card-body">
-                    <h5 class="card-title">Platô</h5>
+                    <h5 class="card-title">Plateau</h5>
                     <div id="chart_div" class="m-5" style="background-color: rgba(255, 159, 0, 0.5); width: auto; height: auto;"></div>
                     <div id="log" >
-                        <p class="card-text" >Logs das rotas.</p>
+                        <p class="card-text" >Route logs.</p>
                     </div>
                 </div>
             </div>
