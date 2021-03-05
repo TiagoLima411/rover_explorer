@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Dashboards", type: :feature do
 
-  scenario 'Check Form Content' do
+  scenario 'check form content' do
     visit(dashboards_new_path)
     expect(page).to have_content('Crie seus comandos com arquivo txt e faça upload')
     expect(page).to have_selector("form")
@@ -13,7 +13,7 @@ RSpec.feature "Dashboards", type: :feature do
     expect(page).to have_selector("input[type=submit]")
   end
 
-  scenario 'Check Form Behavior' do
+  scenario 'check form behavior' do
     visit(dashboards_new_path)
     attach_file('import_file', "#{Rails.root}/spec/files/commands.txt")
     click_on('Save')
