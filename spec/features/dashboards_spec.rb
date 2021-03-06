@@ -17,6 +17,6 @@ RSpec.feature "Dashboards", type: :feature do
     attach_file('import_file', "#{Rails.root}/spec/files/commands.txt")
     click_on('Save')
     expect(page).to have_current_path(dashboards_new_path)
-    expect(page).to have_content('Comandos criados com sucesso.')
+    expect(page).to have_content('Commands created successfully.')
   end
 end
