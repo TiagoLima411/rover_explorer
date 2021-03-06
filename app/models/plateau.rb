@@ -26,6 +26,7 @@ class Plateau < ApplicationRecord
 	def file_to_array(file)
 		arr = []
 		f = file.open
+
 		f.each_line do |line|
 			fomat_line = line.strip
 			arr.push(fomat_line) unless fomat_line.blank?

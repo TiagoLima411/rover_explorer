@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row pt-4">
         <div class="col-2">
-            <%= form_with  url: dashboards_read_file_path, method: :post, html: { multipart: true } do |f| %>
+            <%= form_with  url: dashboards_process_file_path, method: :post, html: { multipart: true } do |f| %>
                 <div class="card p-3" style="width: 18rem;">
                     <%= image_tag "rover.jpg", class: "card-img-top" %>
                     <div class="card-body">
