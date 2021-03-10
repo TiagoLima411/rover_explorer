@@ -1,0 +1,12 @@
+#####################################################################################################
+#                                  Welcome to RoverExplorer server                                  #
+#                            All connections are monitored and recorded                             #
+#                       Disconnect IMMEDIATELY if you are not an authorized user!                   #
+#####################################################################################################
+
+THIS CONTAINER HAS
+
+VIM
+RVM
+RUBY  '2.6.5'
+RAILS '5.2.6'
