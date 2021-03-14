@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  rails:
+    build: .
+    image: tiago411/ubuntu-rails:18.04
+    volumes:
+      - .:/projects
+    ports:
+      - "3000"
+      - "22"
+  db:
+    image: mysql:5.7.33
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes: 
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3307:3306"

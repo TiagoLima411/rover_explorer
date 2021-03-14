@@ -10,6 +10,7 @@ RUN apt-get install -y build-essential automake autoconf \
     bison libssl-dev libyaml-dev libreadline6-dev \
     zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev \
     gawk g++ gcc make libc6-dev patch libsqlite3-dev sqlite3 \
+    libmysqlclient-dev \ 
     libtool pkg-config libpq-dev nodejs ruby-full
 
 RUN mkdir /var/run/sshd
@@ -42,6 +43,9 @@ USER root
 
 EXPOSE 22
 EXPOSE 3000
+
+RUN mkdir /projects
+VOLUME /projects
 
 CMD    ["/usr/sbin/sshd", "-D"]
 

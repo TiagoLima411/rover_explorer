@@ -29,3 +29,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/mysql
+
+.bash_history
+
+/.c9
